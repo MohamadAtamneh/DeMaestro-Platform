@@ -4,20 +4,20 @@ export default function Home() {
   return (
     <div className="flex flex-col items-center justify-center animate-in fade-in zoom-in duration-500">
       <div className="text-center space-y-6 max-w-3xl">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800/50 border border-slate-700 text-sm text-primary-400 mb-4 shadow-sm shadow-primary-500/10">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/60 border border-demaestro-light text-sm text-demaestro-dark mb-4 shadow-sm">
           <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-primary-500"></span>
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-demaestro-medium opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-demaestro-dark"></span>
           </span>
           Platform initialization complete
         </div>
         
-        <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight heading-gradient pb-2">
+        <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight text-demaestro-dark pb-2">
           Build the Future of <br className="hidden md:block"/> 
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-purple-500">Digital Experiences</span>
+          <span className="text-demaestro-medium drop-shadow-sm">Digital Experiences</span>
         </h1>
         
-        <p className="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto pb-4">
+        <p className="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto pb-4">
           DeMaestro Platform is a foundation for your next big idea. We've set up everything you need to start building immediately with React, Tailwind CSS, and React Router.
         </p>
         
@@ -39,7 +39,7 @@ export default function Home() {
         />
         <FeatureCard 
           title="Premium Design System" 
-          description="A complete dark mode theme configured with elegant glassmorphism and beautiful typography via Tailwind v4."
+          description="A complete warm aesthetic theme configured with elegant glassmorphism and custom DeMaestro colors."
           icon="✨"
         />
         <FeatureCard 
@@ -54,12 +54,12 @@ export default function Home() {
 
 function FeatureCard({ title, description, icon }) {
   return (
-    <div className="glass-panel p-6 rounded-2xl hover:bg-slate-800/50 transition-colors duration-300 grouop cursor-default group">
-      <div className="w-12 h-12 bg-slate-800 rounded-xl border border-slate-700 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform duration-300">
+    <div className="glass-panel p-6 rounded-2xl hover:bg-white/80 transition-colors duration-300 group cursor-default">
+      <div className="w-12 h-12 bg-white/90 rounded-xl border border-demaestro-light flex items-center justify-center text-2xl mb-4 group-hover:scale-110 shadow-sm transition-transform duration-300">
         {icon}
       </div>
-      <h3 className="text-xl font-bold text-slate-100 mb-2">{title}</h3>
-      <p className="text-slate-400 leading-relaxed">{description}</p>
+      <h3 className="text-xl font-bold text-demaestro-dark mb-2">{title}</h3>
+      <p className="text-slate-600 leading-relaxed">{description}</p>
     </div>
   );
 }

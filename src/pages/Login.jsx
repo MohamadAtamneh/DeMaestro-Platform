@@ -13,14 +13,14 @@ export default function Login() {
     <div className="flex flex-col items-center justify-center animate-in slide-in-from-bottom-4 fade-in duration-500">
       <div className="w-full max-w-md">
         <div className="text-center mb-10">
-          <h2 className="text-3xl font-bold tracking-tight text-white mb-2">Welcome back</h2>
-          <p className="text-slate-400">Sign in to your account to continue</p>
+          <h2 className="text-3xl font-bold tracking-tight text-demaestro-dark mb-2">Welcome back</h2>
+          <p className="text-slate-600">Sign in to your account to continue</p>
         </div>
 
         <div className="glass-panel rounded-2xl p-8">
           <form className="space-y-6" onSubmit={handleSubmit}>
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-slate-300 mb-2">
+              <label htmlFor="email" className="block text-sm font-medium text-demaestro-dark mb-2">
                 Email address
               </label>
               <input
@@ -34,10 +34,10 @@ export default function Login() {
 
             <div>
               <div className="flex items-center justify-between mb-2">
-                <label htmlFor="password" className="block text-sm font-medium text-slate-300">
+                <label htmlFor="password" className="block text-sm font-medium text-demaestro-dark">
                   Password
                 </label>
-                <a href="#" className="text-sm font-medium text-primary-400 hover:text-primary-300 transition-colors">
+                <a href="#" className="text-sm font-medium text-demaestro-medium hover:text-demaestro-dark transition-colors">
                   Forgot password?
                 </a>
               </div>
@@ -55,9 +55,9 @@ export default function Login() {
             </button>
           </form>
 
-          <div className="mt-8 text-center text-sm text-slate-400">
+          <div className="mt-8 text-center text-sm text-slate-600">
             Don't have an account?{' '}
-            <Link to="/signup" className="font-medium text-primary-400 hover:text-primary-300 transition-colors">
+            <Link to="/signup" className="font-bold text-demaestro-dark hover:text-demaestro-medium transition-colors">
               Sign up now
             </Link>
           </div>

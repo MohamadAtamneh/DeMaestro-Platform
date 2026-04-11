@@ -4,28 +4,32 @@
   --color-primary-400: #818cf8;
   --color-primary-500: #6366f1;
   --color-primary-600: #4f46e5;
+  --color-demaestro-dark: #346739;
+  --color-demaestro-medium: #79AE6F;
+  --color-demaestro-light: #9FCB98;
+  --color-demaestro-cream: #F2EDC2;
 }
 
 body {
-  @apply bg-slate-950 text-slate-50 antialiased min-h-screen selection:bg-primary-500/30;
+  @apply bg-demaestro-cream text-slate-800 antialiased min-h-screen selection:bg-demaestro-medium/30;
 }
 
 .glass-panel {
-  @apply bg-slate-900/40 backdrop-blur-md border border-slate-700/50 shadow-xl;
+  @apply bg-white/60 backdrop-blur-md border border-demaestro-light/60 shadow-xl;
 }
 
 .heading-gradient {
-  @apply bg-gradient-to-br from-white to-slate-400 bg-clip-text text-transparent;
+  @apply text-demaestro-dark font-extrabold;
 }
 
 .btn-primary {
-  @apply bg-primary-600 hover:bg-primary-500 text-white font-medium rounded-lg px-5 py-2.5 transition-all duration-200 shadow-lg shadow-primary-500/30 hover:shadow-primary-500/50 active:scale-95;
+  @apply bg-demaestro-dark hover:bg-demaestro-medium text-white font-medium rounded-lg px-5 py-2.5 transition-all duration-200 shadow-md shadow-demaestro-dark/20 hover:shadow-demaestro-dark/30 active:scale-95;
 }
 
 .btn-secondary {
-  @apply bg-slate-800 hover:bg-slate-700 text-slate-100 font-medium rounded-lg px-5 py-2.5 transition-all duration-200 border border-slate-700 hover:border-slate-600 active:scale-95;
+  @apply bg-white hover:bg-slate-50 text-demaestro-dark font-medium rounded-lg px-5 py-2.5 transition-all duration-200 border border-demaestro-light hover:border-demaestro-medium active:scale-95;
 }
 
 .input-field {
-  @apply w-full bg-slate-900/50 border border-slate-700 rounded-lg px-4 py-2.5 text-slate-100 focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-500 transition-all duration-200 placeholder:text-slate-500;
+  @apply w-full bg-white/70 border border-demaestro-light rounded-lg px-4 py-2.5 text-demaestro-dark focus:outline-none focus:border-demaestro-medium focus:ring-1 focus:ring-demaestro-medium transition-all duration-200 placeholder:text-slate-400;
 }

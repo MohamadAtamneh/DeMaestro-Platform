@@ -13,15 +13,15 @@ export default function Signup() {
     <div className="flex flex-col items-center justify-center animate-in slide-in-from-bottom-4 fade-in duration-500">
       <div className="w-full max-w-md">
         <div className="text-center mb-10">
-          <h2 className="text-3xl font-bold tracking-tight text-white mb-2">Create an account</h2>
-          <p className="text-slate-400">Join us to start building the future</p>
+          <h2 className="text-3xl font-bold tracking-tight text-demaestro-dark mb-2">Create an account</h2>
+          <p className="text-slate-600">Join us to start building the future</p>
         </div>
 
         <div className="glass-panel rounded-2xl p-8">
           <form className="space-y-6" onSubmit={handleSubmit}>
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label htmlFor="first-name" className="block text-sm font-medium text-slate-300 mb-2">
+                <label htmlFor="first-name" className="block text-sm font-medium text-demaestro-dark mb-2">
                   First name
                 </label>
                 <input
@@ -33,7 +33,7 @@ export default function Signup() {
                 />
               </div>
               <div>
-                <label htmlFor="last-name" className="block text-sm font-medium text-slate-300 mb-2">
+                <label htmlFor="last-name" className="block text-sm font-medium text-demaestro-dark mb-2">
                   Last name
                 </label>
                 <input
@@ -47,7 +47,7 @@ export default function Signup() {
             </div>
 
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-slate-300 mb-2">
+              <label htmlFor="email" className="block text-sm font-medium text-demaestro-dark mb-2">
                 Email address
               </label>
               <input
@@ -60,7 +60,7 @@ export default function Signup() {
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-slate-300 mb-2">
+              <label htmlFor="password" className="block text-sm font-medium text-demaestro-dark mb-2">
                 Password
               </label>
               <input
@@ -77,9 +77,9 @@ export default function Signup() {
             </button>
           </form>
 
-          <div className="mt-8 text-center text-sm text-slate-400">
+          <div className="mt-8 text-center text-sm text-slate-600">
             Already have an account?{' '}
-            <Link to="/login" className="font-medium text-primary-400 hover:text-primary-300 transition-colors">
+            <Link to="/login" className="font-bold text-demaestro-dark hover:text-demaestro-medium transition-colors">
               Sign in instead
             </Link>
           </div>

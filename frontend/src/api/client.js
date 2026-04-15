@@ -1,6 +1,6 @@
 import { auth } from '../firebase';
 
-const BASE_URL = 'http://localhost:8000/api';
+const BASE_URL = '/api';
 
 export const apiClient = {
   async get(endpoint) {

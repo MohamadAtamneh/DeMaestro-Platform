@@ -1,6 +1,12 @@
 import { auth } from '../firebase';
 
-const BASE_URL = '/api';
+// Automatically determines if it's running locally or pulling the host from Render.
+let rawUrl = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000/api';
+if (rawUrl && !rawUrl.startsWith('http')) {
+  // If Render passed the raw domain (e.g. demaestro-api.onrender.com), format it properly
+  rawUrl = `https://${rawUrl}/api`;
+}
+const BASE_URL = rawUrl;
 
 export const apiClient = {
   async get(endpoint) {

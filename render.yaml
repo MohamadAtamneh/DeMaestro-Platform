@@ -1,0 +1,28 @@
+services:
+  # Python Backend setup
+  - type: web
+    name: demaestro-api
+    env: python
+    buildCommand: "cd api && pip install -r requirements.txt"
+    startCommand: "cd api && gunicorn index:app --worker-class uvicorn.workers.UvicornWorker --bind 0.0.0.0:$PORT"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.10.13
+      - key: FIREBASE_CREDENTIALS_JSON
+        sync: false
+
+  # React Frontend setup
+  - type: web
+    name: demaestro-frontend
+    env: static
+    buildCommand: "cd frontend && npm install && npm run build"
+    staticPublishPath: "./frontend/dist"
+    envVars:
+      - key: NODE_VERSION
+        value: 20.x
+      # Link the React VITE_API_URL environment variable to the raw host domain of the backend service dynamically!
+      - key: VITE_API_URL
+        fromService:
+          type: web
+          name: demaestro-api
+          property: host

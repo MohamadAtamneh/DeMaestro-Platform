@@ -1,12 +1,32 @@
+import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
+import { auth } from '../firebase';
 
 export default function Signup() {
   const navigate = useNavigate();
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Simulate signup
-    setTimeout(() => navigate('/'), 600);
+    setError('');
+    setLoading(true);
+    try {
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      await updateProfile(userCredential.user, {
+        displayName: `${firstName} ${lastName}`
+      });
+      navigate('/dashboard');
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -18,6 +38,7 @@ export default function Signup() {
         </div>
 
         <div className="glass-panel rounded-2xl p-8">
+          {error && <div className="mb-4 p-3 bg-red-100 border border-red-200 text-red-700 rounded-lg text-sm font-medium">{error}</div>}
           <form className="space-y-6" onSubmit={handleSubmit}>
             <div className="grid grid-cols-2 gap-4">
               <div>
@@ -30,6 +51,8 @@ export default function Signup() {
                   required
                   className="input-field"
                   placeholder="Jane"
+                  value={firstName}
+                  onChange={(e) => setFirstName(e.target.value)}
                 />
               </div>
               <div>
@@ -42,6 +65,8 @@ export default function Signup() {
                   required
                   className="input-field"
                   placeholder="Doe"
+                  value={lastName}
+                  onChange={(e) => setLastName(e.target.value)}
                 />
               </div>
             </div>
@@ -56,6 +81,8 @@ export default function Signup() {
                 required
                 className="input-field"
                 placeholder="name@company.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
 
@@ -69,11 +96,13 @@ export default function Signup() {
                 required
                 className="input-field"
                 placeholder="Create a strong password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
             </div>
 
-            <button type="submit" className="btn-primary w-full py-3">
-              Create Account
+            <button type="submit" disabled={loading} className="btn-primary w-full py-3 disabled:opacity-50 disabled:cursor-not-allowed">
+              {loading ? 'Creating...' : 'Create Account'}
             </button>
           </form>
 

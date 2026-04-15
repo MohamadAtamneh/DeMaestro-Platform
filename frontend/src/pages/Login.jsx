@@ -1,12 +1,27 @@
+import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../firebase';
 
 export default function Login() {
   const navigate = useNavigate();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Simulate login
-    setTimeout(() => navigate('/'), 600);
+    setError('');
+    setLoading(true);
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      navigate('/dashboard');
+    } catch (err) {
+      setError('Invalid email or password. Please try again.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -18,6 +33,7 @@ export default function Login() {
         </div>
 
         <div className="glass-panel rounded-2xl p-8">
+          {error && <div className="mb-4 p-3 bg-red-100 border border-red-200 text-red-700 rounded-lg text-sm font-medium">{error}</div>}
           <form className="space-y-6" onSubmit={handleSubmit}>
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-demaestro-dark mb-2">
@@ -29,6 +45,8 @@ export default function Login() {
                 required
                 className="input-field"
                 placeholder="name@company.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
 
@@ -47,11 +65,13 @@ export default function Login() {
                 required
                 className="input-field"
                 placeholder="••••••••"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
             </div>
 
-            <button type="submit" className="btn-primary w-full py-3">
-              Sign In
+            <button type="submit" disabled={loading} className="btn-primary w-full py-3 disabled:opacity-50 disabled:cursor-not-allowed">
+              {loading ? 'Signing in...' : 'Sign In'}
             </button>
           </form>
 

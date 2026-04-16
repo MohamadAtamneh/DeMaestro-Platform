@@ -20,9 +20,6 @@ services:
     envVars:
       - key: NODE_VERSION
         value: 20.x
-      # Link the React VITE_API_URL environment variable to the raw host domain of the backend service dynamically!
+      # Manually set this in Render Dashboard to exactly: https://demaestro-api.onrender.com/api
       - key: VITE_API_URL
-        fromService:
-          type: web
-          name: demaestro-api
-          property: host
+        sync: false
